@@ -3,14 +3,20 @@ from flask import Flask, request
 app = Flask(__name__)
 
 @app.route("/members")
-def members():
-    return {"Hello": ["world1", "world2", "world3"]}
+def members(message = ""):
+    return {"Hello": message}
 
-@app.route("/input", methods = ["POST"], strict_slashes= False)
+@app.route("/input", methods = ["POST", "GET"], strict_slashes= False)
 def get_input():
-    reqContent = request.get_json()
-    print(reqContent)
-    return {"test1": reqContent["data"]}
+    if request.method == "POST":
+
+        reqContent = request.get_json()
+        print(reqContent)
+        return {"test1": "Sample"}
+        
+    if request.method == "GET":
+
+        return {"test1": "Sample2"}
 
 if __name__ == "__main__" :
     app.run(debug = True)

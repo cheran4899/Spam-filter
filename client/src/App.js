@@ -1,23 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState} from 'react';
 import './Form.css';
+import axios from 'axios';
 
 function App() {
 
   const [data, setData] = useState({})
+  const [resp, getResp] = useState({});
 
 
-  useEffect(() => {
-    fetch("/members").then(
-      res => res.json()
-    ).then(
-      data => {
-        setData(data)
-        console.log(data)
-      }
-    )
-  }, []);
-
-  
   return (
 
 
@@ -33,18 +23,19 @@ function App() {
 <button className='f_button' 
 type='submit'
 value="add todo"
-onClick={ async () => {
-
+onClick={ async () => { 
   const todo = {data}
-  const response = await fetch("/input",{
-    method : "POST",
+  await axios.post("/input",{
     headers : {
       'Content-Type' : 'application/json'
     },
     body: JSON.stringify(todo)
   })
-  
-
+  .then((response) => {
+    getResp(response.data)
+ })
+ .then((response) => {
+  console.log(response.status, response.data)})
 }}>
 click hear to send data 
 </button>
@@ -54,6 +45,7 @@ click hear to send data
 </form>
 </div>
 
+<h5>{resp.message}</h5>
 
 </body>
   );
