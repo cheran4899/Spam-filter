@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 
 app = Flask(__name__)
 
@@ -6,17 +6,13 @@ app = Flask(__name__)
 def members(message = ""):
     return {"Hello": message}
 
-@app.route("/input", methods = ["POST", "GET"], strict_slashes= False)
+@app.route("/input", methods = ["POST"], strict_slashes= False)
 def get_input():
     if request.method == "POST":
 
         reqContent = request.get_json()
         print(reqContent)
-        return {"test1": "Sample"}
-        
-    if request.method == "GET":
-
-        return {"test1": "Sample2"}
+        return jsonify({"conversion": "Sample"})
 
 if __name__ == "__main__" :
     app.run(debug = True)
