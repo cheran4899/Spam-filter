@@ -5,5 +5,5 @@ from sklearn.pipeline import Pipeline
 import pickle
 
 def models_response(message = ""):
-    model =  pickle.load(open("spam_detection_model/clfPipeline.pkl", "rb"))
+    model =  pickle.load(open("clfPipeline.pkl", "rb"))
     return True if model.predict([message]) == np.array([1]) else False

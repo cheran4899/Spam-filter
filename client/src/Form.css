@@ -34,8 +34,8 @@
 }
 
 
-.f_button{
-    display: inline-block;
+.Sbtn{
+    display: center;
     width: 30%;
     height: 2rem;
     color: rgb(3, 0, 0);
@@ -45,7 +45,17 @@
     font-size: 20px;
 
 }
-.f_button:hover{
+.Sbtn:hover{
     background-color: rgb(245, 245, 78);
     transition: 1s background ease;
+}
+
+.Output{
+    display: block;
+    width: 100%;
+    padding: .5rem .8rem .5rem .8rem;
+    margin: .9vw 0 ;
+    border: 1px;;
+    border-radius: 5px;
+    font-size: 20px;
 }

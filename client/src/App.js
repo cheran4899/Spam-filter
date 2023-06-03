@@ -24,8 +24,8 @@ return (
 <div className = "form-box"> 
 <h5 className='form-heading'>Spam Detection</h5>
 <input type="text" value={inputText} onChange={handleChange} />
-      <button onClick={handleClick}>Change Case</button>
-      <p>{outputText}</p>
+      <button className = 'Sbtn' onClick={handleClick}>Detect Spam</button>
+      <p className = 'Output'>{outputText}</p>
 </div>
 
 
